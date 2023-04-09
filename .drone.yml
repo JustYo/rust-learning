@@ -5,7 +5,7 @@ steps:
   - name: cargo-test
     image: rust:latest
     commands:
-      - for f in rbe*; do cd $f; cargo test --color auto; printf "\n///////////////////////$f passed/////////////////////////\n"; done
+      - for f in rbe*; do cd $f; cargo test --color auto; printf "\n///////////////////////$f passed/////////////////////////\n"; cd ..;done
 
   - name: exec-main
     image: rust:latest
