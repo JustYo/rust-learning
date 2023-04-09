@@ -11,6 +11,6 @@ steps:
     image: rust:latest
     commands:
       - echo "Compile files before executing"
-      - for f in rbe*; do rustc $f/src/main.rc; done
+      - for f in rbe*; do rustc $f/src/main.rs; done
       - echo "Execute all files"
-      - for f in ./rbe*; do $f/src/main.rc; done
+      - for f in ./rbe*; do $f/src/main; done
