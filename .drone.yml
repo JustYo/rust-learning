@@ -1,0 +1,16 @@
+kind: pipeline
+type: docker
+name: default
+steps:
+  - name: cargo-test
+    image: rust:latest
+    commands:
+      - for f in rbe*; do cd $f; cargo test --color auto; printf "\n///////////////////////$f passed/////////////////////////\n"; done
+
+  - name: exec-main
+    image: rust:latest
+    commands:
+      - echo "Compile files before executing"
+      - for f in ./rbe*; do rustc $f/src/main.rc; done
+      - echo "Execute all files"
+      - for f in ./rbe*; do $f/src/main.rc; done
